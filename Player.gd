@@ -20,8 +20,8 @@ func _process(delta):
 
 func _input(evt):
 	if evt.is_action_pressed("jump"):
-		print(get_colliding_bodies())
-		apply_impulse(Vector2(), Vector2(0, -150))
+		if len(get_colliding_bodies()) > 0:
+			apply_impulse(Vector2(), Vector2(0, -9000))
 
 func _physics_process(delta):
 	var vel = get_linear_velocity()
@@ -34,3 +34,6 @@ func _physics_process(delta):
 
 func _integrate_forces(state):
 	rotation_degrees = 0
+
+func enter_coffee_mode():
+	$Sprite.fps = 80

@@ -1,0 +1,39 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://tasse19.png" type="Texture" id=1]
+[ext_resource path="res://tasse00.png" type="Texture" id=2]
+[ext_resource path="res://tasse07.png" type="Texture" id=3]
+[ext_resource path="res://tasse15.png" type="Texture" id=4]
+[ext_resource path="res://tasse12.png" type="Texture" id=5]
+[ext_resource path="res://tasse01.png" type="Texture" id=6]
+[ext_resource path="res://tasse02.png" type="Texture" id=7]
+[ext_resource path="res://tasse16.png" type="Texture" id=8]
+[ext_resource path="res://tasse17.png" type="Texture" id=9]
+[ext_resource path="res://tasse13.png" type="Texture" id=10]
+[ext_resource path="res://tasse.gd" type="Script" id=11]
+[ext_resource path="res://tasse05.png" type="Texture" id=12]
+[ext_resource path="res://tasse20.png" type="Texture" id=13]
+[ext_resource path="res://tasse10.png" type="Texture" id=14]
+[ext_resource path="res://tasse11.png" type="Texture" id=15]
+[ext_resource path="res://tasse21.png" type="Texture" id=16]
+[ext_resource path="res://tasse18.png" type="Texture" id=17]
+[ext_resource path="res://tasse08.png" type="Texture" id=18]
+[ext_resource path="res://tasse04.png" type="Texture" id=19]
+[ext_resource path="res://tasse09.png" type="Texture" id=20]
+[ext_resource path="res://tasse06.png" type="Texture" id=21]
+[ext_resource path="res://tasse14.png" type="Texture" id=22]
+[ext_resource path="res://tasse03.png" type="Texture" id=23]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 12 ), ExtResource( 21 ), ExtResource( 3 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 22 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 1 ), ExtResource( 13 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+script = ExtResource( 11 )
