@@ -20,14 +20,16 @@ func _process(delta):
 
 func _input(evt):
 	if evt.is_action_pressed("jump"):
+		print(get_colliding_bodies())
 		apply_impulse(Vector2(), Vector2(0, -150))
 
 func _physics_process(delta):
+	var vel = get_linear_velocity()
 	if Input.is_action_pressed("move_right"):
-		add_force(Vector2(), Vector2(100, 0))
+		set_linear_velocity(Vector2(speed, vel.y))
 		$Sprite.flip_h = false
 	if Input.is_action_pressed("move_left"):
-		position.x -= speed * delta
+		set_linear_velocity(Vector2(-speed, vel.y))
 		$Sprite.flip_h = true
 
 func _integrate_forces(state):

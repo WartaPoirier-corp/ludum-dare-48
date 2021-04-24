@@ -176,7 +176,7 @@ points = PoolVector2Array( 96, 96, 0, 96, 0, 0, 96, 0 )
 9/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 47.0399, 64.9126 )
+extents = Vector2( 44.1471, 59.579 )
 
 [sub_resource type="AnimatedTexture" id=8]
 flags = 4
@@ -194,6 +194,8 @@ tile_data = PoolIntArray( -851952, 1, 0, -851951, 1, 0, -851950, 1, 0, -851949, 
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2( 200, -60 )
+mass = 2.0
+contact_monitor = true
 script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
@@ -202,7 +204,7 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2( 8.99998, -5 )
+position = Vector2( 8.99998, -2.47731 )
 shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
