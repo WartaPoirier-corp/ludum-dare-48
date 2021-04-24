@@ -13,14 +13,22 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if position.y > 200:
+		position.x = 200
+		position.y = -100
+
+func _input(evt):
+	if evt.is_action_pressed("jump"):
+		apply_impulse(Vector2(), Vector2(0, -150))
 
 func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
-		position.x += speed * delta
+		add_force(Vector2(), Vector2(100, 0))
+		$Sprite.flip_h = false
 	if Input.is_action_pressed("move_left"):
 		position.x -= speed * delta
+		$Sprite.flip_h = true
 
 func _integrate_forces(state):
 	rotation_degrees = 0
