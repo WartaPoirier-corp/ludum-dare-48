@@ -17,7 +17,8 @@ func _ready():
 
 func set_caffeine_level(level):
 	var right = $CoffeeBar/Fill.margin_right
-	$CoffeeBar/Fill.margin_left = right - (level / 100 * right)
+	var left = $CoffeeBar.rect_size.x
+	$CoffeeBar/Fill.margin_left = right - (level * left / 100.0)
 
 func show_message():
 	$AnimationPlayer.play("text_popup")
