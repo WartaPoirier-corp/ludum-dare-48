@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://tasse19.png" type="Texture" id=1]
 [ext_resource path="res://tasse00.png" type="Texture" id=2]
@@ -32,8 +32,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.43629, 6.61559 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 script = ExtResource( 11 )
+
+[node name="TasseCollider" type="KinematicBody2D" parent="AnimatedSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/TasseCollider"]
+position = Vector2( -2.00224, 32.7036 )
+shape = SubResource( 2 )

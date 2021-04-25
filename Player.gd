@@ -17,6 +17,10 @@ func _process(delta):
 	if position.y > 200:
 		position.x = 200
 		position.y = -100
+	for col in get_colliding_bodies():
+		if col.name == "TasseCollider":
+			col.get_parent().queue_free()
+			enter_coffee_mode()
 
 func _input(evt):
 	if evt.is_action_pressed("jump"):
@@ -36,4 +40,10 @@ func _integrate_forces(state):
 	rotation_degrees = 0
 
 func enter_coffee_mode():
-	$Sprite.fps = 80
+	$CoffeeTimer.start(60)
+	$Sprite.texture.fps = 40
+	gravity_scale = 1
+
+func _on_CoffeeTimer_timeout():
+	$Sprite.texture.fps = 4
+	gravity_scale = 2
