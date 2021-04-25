@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://MainScene/Player.gd" type="Script" id=1]
 [ext_resource path="res://MainScene/assets/nuaj2.png" type="Texture" id=2]
@@ -14,8 +14,12 @@
 [ext_resource path="res://MainScene/assets/edgarquiboit2.png" type="Texture" id=12]
 [ext_resource path="res://MainScene/assets/edgarquicourtpas.png" type="Texture" id=13]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Pics/Pics.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 96, 96, 0, 96, 0, 0, 96, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 96, 96, 0, 96, 0, 0, 96, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -182,6 +186,27 @@ points = PoolVector2Array( 96, 96, 0, 96, 0, 0, 96, 0 )
 9/shape_one_way_margin = 0.0
 9/shapes = [  ]
 9/z_index = 0
+10/name = "tilemap.png 10"
+10/texture = ExtResource( 3 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 96, 192, 96, 96 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape = SubResource( 9 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+10/z_index = 0
 
 [sub_resource type="PhysicsMaterial" id=6]
 absorbent = true
@@ -228,10 +253,14 @@ contact_monitor = true
 script = ExtResource( 1 )
 
 [node name="HUD" parent="RigidBody2D" instance=ExtResource( 14 )]
-margin_left = -165.539
-margin_top = 203.838
-margin_right = -165.539
-margin_bottom = 203.838
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -533.5
+margin_top = -323.0
+margin_right = 533.5
+margin_bottom = 323.0
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
 position = Vector2( 6.25513, -30.9157 )
@@ -247,7 +276,7 @@ position = Vector2( 11.9377, -5.51098 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 8 )
 animation = "run"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CoffeeTimer" type="Timer" parent="RigidBody2D"]
@@ -317,5 +346,14 @@ position = Vector2( 1340.49, -479.256 )
 
 [node name="Node2D2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 8532.78, -1250.86 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 15 )]
+position = Vector2( 6096.06, -240.204 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 15 )]
+position = Vector2( 6191.39, -240.204 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 15 )]
+position = Vector2( 6930.33, -143.022 )
 [connection signal="animation_finished" from="RigidBody2D/Sprite" to="RigidBody2D" method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="RigidBody2D/CoffeeTimer" to="RigidBody2D" method="_on_CoffeeTimer_timeout"]

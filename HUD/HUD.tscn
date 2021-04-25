@@ -26,20 +26,28 @@ __meta__ = {
 }
 
 [node name="CoffeeBar" type="ColorRect" parent="."]
-margin_left = 512.264
-margin_top = 105.773
-margin_right = 873.264
-margin_bottom = 130.773
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -363.0
+margin_top = -27.0
+margin_right = -2.0
+margin_bottom = -2.0
 color = Color( 0.882353, 0.729412, 0.568627, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Fill" type="ColorRect" parent="CoffeeBar"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 360.0
-margin_bottom = 24.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -179.5
+margin_top = -11.5
+margin_right = 179.5
+margin_bottom = 11.5
 color = Color( 0.596078, 0.427451, 0.227451, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

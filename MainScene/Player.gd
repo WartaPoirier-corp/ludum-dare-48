@@ -2,15 +2,6 @@ extends RigidBody2D
 
 var speed = 300
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	MusicPlayer.stream = load("res://Music/chill.ogg")
-	MusicPlayer.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,6 +12,8 @@ func _process(delta):
 			col.get_parent().queue_free()
 			$Sprite.animation = "drink"
 			enter_coffee_mode()
+		if col.name == "PikCol":
+			get_tree().change_scene("res://GameOver/GameOver.tscn")
 	$HUD.set_caffeine_level($CoffeeTimer.time_left * 100 / 15)
 	
 
