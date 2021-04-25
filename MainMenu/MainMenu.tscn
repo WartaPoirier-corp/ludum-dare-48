@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GameOver/button.stylebox" type="StyleBox" id=2]
@@ -7,6 +7,14 @@
 [ext_resource path="res://MainScene/assets/nuaj1.png" type="Texture" id=5]
 [ext_resource path="res://MainScene/assets/nuaj3.png" type="Texture" id=6]
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.490196, 0.345098, 0.737255, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -33,7 +41,19 @@ margin_left = -112.0
 margin_top = 104.0
 margin_right = 112.0
 margin_bottom = 118.0
+rect_pivot_offset = Vector2( 160.008, 7 )
 text = "A game by the WartaPoirier Corp ©"
+align = 1
+
+[node name="Label3" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -112.0
+margin_top = 122.0
+margin_right = 112.0
+margin_bottom = 136.0
+rect_pivot_offset = Vector2( 160.008, 7 )
+text = "Made during Ludum Dare 48"
 align = 1
 
 [node name="Button" type="Button" parent="."]
@@ -41,9 +61,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -147.0
+margin_left = -150.0
 margin_top = -19.0
-margin_right = 147.0
+margin_right = 150.0
 margin_bottom = 19.0
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
@@ -91,4 +111,32 @@ texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = 50.0
+margin_right = 150.0
+margin_bottom = 148.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 300.0
+margin_bottom = 98.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 33.0
+margin_right = 290.0
+margin_bottom = 64.0
+text = "Use W/Q/D, Z/Q/D or left/right/space to move."
+align = 3
+autowrap = true
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

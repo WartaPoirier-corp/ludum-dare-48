@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chill1.ogg-b8336068ef2cbb0d2d187cfa8bc2bced.oggstr"
+
+[deps]
+
+source_file="res://Music/chill1.ogg"
+dest_files=[ "res://.import/chill1.ogg-b8336068ef2cbb0d2d187cfa8bc2bced.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -5,6 +5,7 @@ var velocity = Vector2()
 var speed = 300
 var manque_level = 0
 var is_jumping = false
+var drog = false
 
 func _ready():
 	MusicPlayer.pitch_scale = 1
@@ -16,6 +17,12 @@ func _process(delta):
 	get_parent().get_node("CanvasLayer/HUD").set_caffeine_level($CoffeeTimer.time_left * 100 / 15)
 	if is_jumping and is_on_floor():
 		is_jumping = false
+		
+	var mood_mat = get_parent().get_node("CanvasLayer2/Mood").material
+	var current_mood = mood_mat.get_shader_param("mood")
+	if current_mood > 0.5 - (0.05 * manque_level) and not drog:
+		var new_mood = current_mood - (delta / 4)
+		mood_mat.set_shader_param("mood", max(0.5 - (0.05 * manque_level), new_mood))
 	
 
 func _input(evt):
@@ -63,17 +70,22 @@ func _integrate_forces(state):
 func enter_coffee_mode():
 	$CoffeeTimer.start(15)
 	$Sprite.speed_scale = 10
-	MusicPlayer.drog()
+	MusicPlayer.drog(manque_level + 1)
 	gravity /= 1.5
 	speed = 600
 	get_parent().get_node("CanvasLayer/HUD").show_message()
+	get_parent().get_node("CanvasLayer2/Mood").material.set_shader_param("mood", 0.75)
+	var blur_mat = get_parent().get_node("CanvasLayer2/Mood/Blur").material
+	var blur = blur_mat.get_shader_param("sharp_radius")
+	blur_mat.set_shader_param("sharp_radius", blur - 0.05)
+	drog = true
 
 func _on_CoffeeTimer_timeout():
+	drog = false
 	manque_level += 1
 	$CoffeeTimer.stop()
 	$Sprite.speed_scale = 1 - (0.05 * manque_level)
-	MusicPlayer.pitch_scale = 1 - (0.05 * manque_level)
-	gravity = 400.0 + (20 * manque_level)
+	gravity = 400.0 + (10 * manque_level)
 	speed = 300 - (manque_level * 20)
 
 func _on_Sprite_animation_finished():
