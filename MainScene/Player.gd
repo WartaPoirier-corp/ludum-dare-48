@@ -9,8 +9,8 @@ var speed = 300
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	MusicPlayer.stream = load("res://Music/chill.ogg")
+	MusicPlayer.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -56,6 +56,7 @@ func _integrate_forces(state):
 func enter_coffee_mode():
 	$CoffeeTimer.start(15)
 	$Sprite.speed_scale = 10
+	MusicPlayer.pitch_scale *= 3
 	gravity_scale = 1
 	speed = 600
 	$HUD.show_message()
@@ -63,6 +64,7 @@ func enter_coffee_mode():
 func _on_CoffeeTimer_timeout():
 	$CoffeeTimer.stop()
 	$Sprite.speed_scale = 1
+	MusicPlayer.pitch_scale /= 3
 	gravity_scale = 2
 	speed = 300
 
