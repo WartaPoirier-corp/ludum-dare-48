@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tilemap.png-46a337173b72cb944c4b8bc903fbf6c4.stex"
+path="res://.import/edgarquiboit2.png-55a68418b258f5998326497116c5a7f7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainScene/assets/tilemap.png"
-dest_files=[ "res://.import/tilemap.png-46a337173b72cb944c4b8bc903fbf6c4.stex" ]
+source_file="res://MainScene/assets/edgarquiboit2.png"
+dest_files=[ "res://.import/edgarquiboit2.png-55a68418b258f5998326497116c5a7f7.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

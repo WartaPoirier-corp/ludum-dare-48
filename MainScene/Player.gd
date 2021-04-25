@@ -20,6 +20,7 @@ func _process(delta):
 	for col in get_colliding_bodies():
 		if col.name == "TasseCollider":
 			col.get_parent().queue_free()
+			$Sprite.animation = "drink"
 			enter_coffee_mode()
 
 func _input(evt):
@@ -29,21 +30,40 @@ func _input(evt):
 
 func _physics_process(delta):
 	var vel = get_linear_velocity()
+	var running = false
+	var s = speed
+	if len(get_colliding_bodies()) == 0:
+		s = s / 2
 	if Input.is_action_pressed("move_right"):
-		set_linear_velocity(Vector2(speed, vel.y))
+		set_linear_velocity(Vector2(s, vel.y))
+		if $Sprite.animation != "run":
+			$Sprite.animation = "run"
 		$Sprite.flip_h = false
+		running = true
 	if Input.is_action_pressed("move_left"):
-		set_linear_velocity(Vector2(-speed, vel.y))
+		set_linear_velocity(Vector2(-s, vel.y))
+		if $Sprite.animation != "run":		
+			$Sprite.animation = "run"
 		$Sprite.flip_h = true
+		running = true
+	if not running and $Sprite.animation != "drink":
+		$Sprite.animation = "default"
 
 func _integrate_forces(state):
 	rotation_degrees = 0
 
 func enter_coffee_mode():
-	$CoffeeTimer.start(60)
-	$Sprite.texture.fps = 40
+	$CoffeeTimer.start(15)
+	$Sprite.speed_scale = 10
 	gravity_scale = 1
+	speed = 600
 
 func _on_CoffeeTimer_timeout():
-	$Sprite.texture.fps = 4
+	$Sprite.speed_scale = 1
 	gravity_scale = 2
+	speed = 300
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "drink":
+		$Sprite.animation = "default"
+
