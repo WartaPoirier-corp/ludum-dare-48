@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
+[ext_resource path="res://HUD/fuegofatuo.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "text_popup"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -500, -1000 ), Vector2( -500, -500 ), Vector2( -500, -500 ), Vector2( -500, -1000 ) ]
+}
+
+[node name="Control" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoffeeBar" type="ColorRect" parent="."]
+margin_left = 512.264
+margin_top = 105.773
+margin_right = 873.264
+margin_bottom = 130.773
+color = Color( 0.882353, 0.729412, 0.568627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fill" type="ColorRect" parent="CoffeeBar"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 360.0
+margin_bottom = 24.0
+color = Color( 0.596078, 0.427451, 0.227451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -1000.0
+margin_right = 1256.0
+margin_bottom = -861.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.537255, 0.407843, 0.184314, 1 )
+text = "CRONCHE LE CAFÉ
+(changez moi svp, j'ai pas d'idée de texte)"
+align = 1
+valign = 1
+percent_visible = -0.0204082
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/text_popup = SubResource( 1 )

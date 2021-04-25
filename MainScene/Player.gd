@@ -22,6 +22,8 @@ func _process(delta):
 			col.get_parent().queue_free()
 			$Sprite.animation = "drink"
 			enter_coffee_mode()
+	$HUD.set_caffeine_level($CoffeeTimer.time_left * 100 / 15)
+	
 
 func _input(evt):
 	if evt.is_action_pressed("jump"):
@@ -57,8 +59,10 @@ func enter_coffee_mode():
 	$Sprite.speed_scale = 10
 	gravity_scale = 1
 	speed = 600
+	$HUD.show_message()
 
 func _on_CoffeeTimer_timeout():
+	$CoffeeTimer.stop()
 	$Sprite.speed_scale = 1
 	gravity_scale = 2
 	speed = 300
