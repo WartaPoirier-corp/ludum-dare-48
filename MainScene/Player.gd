@@ -1,7 +1,10 @@
 extends RigidBody2D
 
 var speed = 300
+var manque_level = 0
 
+func _ready():
+	MusicPlayer.pitch_scale = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -49,17 +52,19 @@ func _integrate_forces(state):
 func enter_coffee_mode():
 	$CoffeeTimer.start(15)
 	$Sprite.speed_scale = 10
-	MusicPlayer.pitch_scale *= 3
+	MusicPlayer.drog()
 	gravity_scale = 1
 	speed = 600
 	$HUD.show_message()
 
 func _on_CoffeeTimer_timeout():
+	manque_level += 1
 	$CoffeeTimer.stop()
-	$Sprite.speed_scale = 1
-	MusicPlayer.pitch_scale /= 3
-	gravity_scale = 2
-	speed = 300
+	$Sprite.speed_scale = 1 - (0.05 * manque_level)
+	MusicPlayer.pitch_scale = 1 - (0.05 * manque_level)
+	gravity_scale = 2 + (0.1 * manque_level)
+	speed = 300 - (manque_level * 20)
+
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "drink":
