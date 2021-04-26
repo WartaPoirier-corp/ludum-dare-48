@@ -1,11 +1,28 @@
 extends KinematicBody2D
 
-var gravity = 400.0
+var gravity = 380.0
 var velocity = Vector2()
 var speed = 300
 var manque_level = 0
 var is_jumping = false
 var drog = false
+
+func animation(base, bad):
+	var anim = base
+	if manque_level > 2:
+		anim = bad
+		
+	if $Sprite.animation != anim:
+		$Sprite.animation = anim
+
+func run_animation():
+	animation("run", "run_bad")
+	
+func drink_animation():
+	animation("drink", "drink")
+
+func default_animation():
+	animation("default", "default_bad")
 
 func _ready():
 	MusicPlayer.pitch_scale = 1
@@ -38,14 +55,12 @@ func _physics_process(delta):
 	velocity.x = 0
 	if Input.is_action_pressed("move_right"):
 		velocity.x += speed;
-		if $Sprite.animation != "run":
-			$Sprite.animation = "run"
 		$Sprite.flip_h = false
+		run_animation()
 		running = true
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= speed;
-		if $Sprite.animation != "run":		
-			$Sprite.animation = "run"
+		run_animation()
 		$Sprite.flip_h = true
 		running = true
 	
@@ -53,21 +68,19 @@ func _physics_process(delta):
 		velocity.x /= 1.5
 	
 	if not running and $Sprite.animation != "drink":
-		$Sprite.animation = "default"
+		default_animation()
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	for i in get_slide_count():
 		var col = get_slide_collision(i).collider
 		if col.name == "TasseCollider":
 			col.get_parent().queue_free()
-			$Sprite.animation = "drink"
+			drink_animation()
 			enter_coffee_mode()
 		if col.name == "PikCol":
 			get_tree().change_scene("res://GameOver/GameOver.tscn")
 
-func _integrate_forces(state):
-	rotation_degrees = 0
-
 func enter_coffee_mode():
+	$CoffeeTimer.stop()
 	$CoffeeTimer.start(15)
 	$Sprite.speed_scale = 10
 	MusicPlayer.drog(manque_level + 1)
@@ -85,7 +98,7 @@ func _on_CoffeeTimer_timeout():
 	manque_level += 1
 	$CoffeeTimer.stop()
 	$Sprite.speed_scale = 1 - (0.05 * manque_level)
-	gravity = 400.0 + (10 * manque_level)
+	gravity = 380.0 + (10 * manque_level)
 	speed = 300 - (manque_level * 20)
 
 func _on_Sprite_animation_finished():
