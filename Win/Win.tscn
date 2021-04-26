@@ -97,4 +97,14 @@ texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Time" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -106.5
+margin_top = 150.0
+margin_right = 106.5
+margin_bottom = 164.0
+text = "Time: 0.0s"
+align = 1
 [connection signal="pressed" from="BackMenu" to="." method="_on_BackMenu_pressed"]

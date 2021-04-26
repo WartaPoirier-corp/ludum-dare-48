@@ -1,19 +1,14 @@
 extends Control
 
+var start_time
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	start_time = OS.get_ticks_msec()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	var ellapsed = (OS.get_ticks_msec() / 1000.0) - (start_time / 1000.0)
+	$Timer.text = "%.3fs" % ellapsed
+	Global.time = ellapsed
 
 func set_caffeine_level(level):
 	var right = $CoffeeBar/Fill.margin_right

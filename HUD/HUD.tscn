@@ -65,10 +65,17 @@ custom_colors/font_color = Color( 0.537255, 0.407843, 0.184314, 1 )
 text = "I love coffee!"
 align = 1
 valign = 1
-percent_visible = -0.0204082
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/text_popup = SubResource( 1 )
+
+[node name="Timer" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -19.0
+margin_right = 390.0
+margin_bottom = -2.0

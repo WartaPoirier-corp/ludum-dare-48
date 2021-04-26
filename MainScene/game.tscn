@@ -401,6 +401,21 @@ texture = ExtResource( 27 )
 position = Vector2( 11350.3, -1187.06 )
 texture = ExtResource( 27 )
 
+[node name="fleche8" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+position = Vector2( 7086.38, -1258.16 )
+rotation = 1.309
+texture = ExtResource( 27 )
+
+[node name="fleche" type="Sprite" parent="ParallaxBackground2/ParallaxLayer/fleche8"]
+position = Vector2( 121.029, -2112.62 )
+rotation = -0.523598
+texture = ExtResource( 27 )
+
+[node name="fleche9" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+position = Vector2( 13456.5, -1168.24 )
+rotation = 0.445261
+texture = ExtResource( 27 )
+
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
 motion_offset = Vector2( -500, 0 )
 
