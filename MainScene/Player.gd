@@ -73,7 +73,7 @@ func _physics_process(delta):
 	for i in get_slide_count():
 		var col = get_slide_collision(i).collider
 		if col.name == "TasseCollider":
-			col.get_parent().queue_free()
+			col.get_parent().depop()
 			drink_animation()
 			enter_coffee_mode()
 		if col.name == "PikCol":

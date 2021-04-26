@@ -21,3 +21,13 @@ func _process(delta):
 		position.y += delta * speed
 	else:
 		up = not up
+
+func depop():
+	visible = false
+	$TasseCollider/CollisionShape2D.set_deferred("disabled", true)
+	$RepopTimer.start(20)
+
+
+func _on_RepopTimer_timeout():
+	visible = true
+	$TasseCollider/CollisionShape2D.set_deferred("disabled", false)

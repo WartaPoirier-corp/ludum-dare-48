@@ -42,8 +42,12 @@ position = Vector2( 3.17493, 3.17484 )
 frames = SubResource( 1 )
 script = ExtResource( 11 )
 
+[node name="RepopTimer" type="Timer" parent="AnimatedSprite"]
+one_shot = true
+
 [node name="TasseCollider" type="KinematicBody2D" parent="AnimatedSprite"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/TasseCollider"]
 position = Vector2( -2.00224, 32.7036 )
 shape = SubResource( 2 )
+[connection signal="timeout" from="AnimatedSprite/RepopTimer" to="AnimatedSprite" method="_on_RepopTimer_timeout"]
