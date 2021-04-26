@@ -3,5 +3,6 @@
 [ext_resource path="res://Music/Music.gd" type="Script" id=1]
 
 [node name="Music" type="AudioStreamPlayer"]
+volume_db = -22.214
 script = ExtResource( 1 )
 [connection signal="finished" from="." to="." method="_on_Music_finished"]

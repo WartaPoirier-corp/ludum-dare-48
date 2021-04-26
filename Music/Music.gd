@@ -5,7 +5,7 @@ var manque_level = 1
 
 func reset():
 	manque_level = 1
-	volume_db = 1
+	volume_db = -20
 
 func chill():
 	var level = min(manque_level, 4)
