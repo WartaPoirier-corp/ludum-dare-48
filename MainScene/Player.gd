@@ -25,7 +25,9 @@ func default_animation():
 	animation("default", "default_bad")
 
 func _ready():
-	MusicPlayer.pitch_scale = 1
+	MusicPlayer.reset()
+	if not MusicPlayer.playing || MusicPlayer.np != "chill1":
+		MusicPlayer.chill()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -49,7 +51,6 @@ func _input(evt):
 
 func _physics_process(delta):
 	var running = false
-	var s = speed
 
 	velocity.y += delta * gravity
 	velocity.x = 0
@@ -78,6 +79,8 @@ func _physics_process(delta):
 			enter_coffee_mode()
 		if col.name == "PikCol":
 			get_tree().change_scene("res://GameOver/GameOver.tscn")
+		if col.name == "Drapo":
+			get_tree().change_scene("res://Win/Win.tscn")
 
 func enter_coffee_mode():
 	$CoffeeTimer.stop()
